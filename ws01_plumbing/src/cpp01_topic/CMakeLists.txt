@@ -23,9 +23,9 @@ ament_target_dependencies(
   "std_msgs"
   "base_interfaces_demo"
 )
-
 install(TARGETS demo01_talker_str
   DESTINATION lib/${PROJECT_NAME})
+
 
 # listener
 add_executable(demo02_listener_str src/demo02_listener_str.cpp)
@@ -39,8 +39,37 @@ ament_target_dependencies(
   "std_msgs"
   "base_interfaces_demo"
 )
-
 install(TARGETS demo02_listener_str
+  DESTINATION lib/${PROJECT_NAME})
+
+# demo03_talker_student
+add_executable(demo03_talker_student src/demo03_talker_student.cpp)
+target_include_directories(demo03_talker_student PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(demo03_talker_student PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+ament_target_dependencies(
+  demo03_talker_student
+  "rclcpp"
+  "std_msgs"
+  "base_interfaces_demo"
+)
+install(TARGETS demo03_talker_student
+  DESTINATION lib/${PROJECT_NAME})
+
+# demo04_listener_student
+add_executable(demo04_listener_student src/demo04_listener_student.cpp)
+target_include_directories(demo04_listener_student PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(demo04_listener_student PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+ament_target_dependencies(
+  demo04_listener_student
+  "rclcpp"
+  "std_msgs"
+  "base_interfaces_demo"
+)
+install(TARGETS demo04_listener_student
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
