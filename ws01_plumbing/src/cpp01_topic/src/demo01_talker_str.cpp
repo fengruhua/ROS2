@@ -51,6 +51,6 @@ int main(int argc, char ** argv)
   // 节点关闭
   rclcpp::shutdown();
 
-  printf("cpp01_topic package shutdown\n");
+  printf("cpp01_topic publish package shutdown\n");
   return 0;
 }
