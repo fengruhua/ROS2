@@ -48,3 +48,9 @@
 .vscode/*
 fastlio/*
 fastlio2/*
+fastlio3/*
+fastlio4/*
+neu_ws/*
+ws_livox/*
+*.txt
+*.py
