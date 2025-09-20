@@ -35,6 +35,19 @@ ament_target_dependencies(
 install(TARGETS demo01_param
   DESTINATION lib/${PROJECT_NAME})
 
+# demo_server
+add_executable(demo_server src/demo_server.cpp)
+target_include_directories(demo_server PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(demo_server PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+ament_target_dependencies(
+  demo_server
+  "rclcpp"
+)
+install(TARGETS demo_server
+  DESTINATION lib/${PROJECT_NAME})
+  
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
